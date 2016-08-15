@@ -43,32 +43,20 @@ typedef struct
 	float posx;
 	float posy;
 	float posz;
-	float rotx;
-	float roty;
-	float rotz;
-	float sclx;
-	float scly;
-	float sclz;
-} jamabar;
-
-typedef struct
-{
-	float posx;
-	float posy;
-	float posz;
 	int type;
 } banana;
 
 extern int startCount;
 extern int goalCount;
 extern int bumperCount;
-extern int jamabarCount;
 extern int bananaCount;
+extern int ignoreCount;
 start starts[16];
 goal goals[16];
 bumper bumpers[16];
-jamabar jamabars[16];
 banana bananas[16];
+float fallOutPlane;
+char ignoreList[80][80];
 
 void parseConfig(char * configpath);
 

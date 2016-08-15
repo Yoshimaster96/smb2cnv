@@ -3,7 +3,6 @@
 int startCount = 0;
 int goalCount = 0;
 int bumperCount = 0;
-int jamabarCount = 0;
 int bananaCount = 0;
 int ignoreCount = 0;
 
@@ -98,36 +97,6 @@ void parseConfig(char * configpath)
 				else if(param2=='y') bumpers[index].scly = valuef;
 				else if(param2=='z') bumpers[index].sclz = valuef;
 				if((index+1)>bumperCount) bumperCount = (index+1);
-			}
-		}
-		else if(strcmp(ident,"jamabar")==0)
-		{
-			if(strcmp(param1,"pos")==0)
-			{
-				float valuef = 0.0;
-				sscanf(value,"%f",&valuef);
-				if(param2=='x') jamabars[index].posx = valuef;
-				else if(param2=='y') jamabars[index].posy = valuef;
-				else if(param2=='z') jamabars[index].posz = valuef;
-				if((index+1)>jamabarCount) jamabarCount = (index+1);
-			}
-			else if(strcmp(param1,"rot")==0)
-			{
-				float valuef = 0.0;
-				sscanf(value,"%f",&valuef);
-				if(param2=='x') jamabars[index].rotx = valuef;
-				else if(param2=='y') jamabars[index].roty = valuef;
-				else if(param2=='z') jamabars[index].rotz = valuef;
-				if((index+1)>jamabarCount) jamabarCount = (index+1);
-			}
-			else if(strcmp(param1,"scl")==0)
-			{
-				float valuef = 0.0;
-				sscanf(value,"%f",&valuef);
-				if(param2=='x') jamabars[index].sclx = valuef;
-				else if(param2=='y') jamabars[index].scly = valuef;
-				else if(param2=='z') jamabars[index].sclz = valuef;
-				if((index+1)>jamabarCount) jamabarCount = (index+1);
 			}
 		}
 		else if(strcmp(ident,"banana")==0)
