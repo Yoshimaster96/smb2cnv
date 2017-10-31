@@ -3,14 +3,11 @@
 #include "../objparse/objparse.h"
 #include "../config/config.h"
 
-<<<<<<< HEAD
 int individualSize[80] = {0};
 int cumulativeSize[80] = {0};
 int indAnimSize[80] = {0};
 int cumAnimSize[80] = {0};
 
-=======
->>>>>>> c13dc21b0a6c7ce6bad252b3e3d33432b1db1281
 void writeNullBytes(FILE * fp,int count)
 {
 	for(int i=0; i<count; i++) putc(0,fp);
@@ -286,23 +283,15 @@ void writeLz()
 	fseek(fpCol,0,SEEK_END);
 	int colSize = ftell(fpCol);
 	rewind(fpCol);
-<<<<<<< HEAD
 	int realColSize = colSize + (0xA9C*(tallyObjs+1)) + (0x200*(colSize/0x40));
-=======
-	int realColSize = colSize + 0x49C + (0x200*(colSize/0x40)) + 0x600;
 	putc(0,temp);
->>>>>>> c13dc21b0a6c7ce6bad252b3e3d33432b1db1281
 	putc(0,temp);
 	putc(0,temp);
 	putc(0,temp);
 	putc('D',temp);
 	putc('z',temp);
 	putc(0,temp);
-	putc('D',temp);
-	putc('z',temp);
 	putc(0,temp);
-	putc(0,temp);
-<<<<<<< HEAD
 	putc(((tallyObjs+1)>>24)&0xFF,temp);
 	putc(((tallyObjs+1)>>16)&0xFF,temp);
 	putc(((tallyObjs+1)>>8)&0xFF,temp);
@@ -312,27 +301,11 @@ void writeLz()
 	putc(((cfgSize+0x8B4)>>8)&0xFF,temp);
 	putc((cfgSize+0x8B4)&0xFF,temp);
 	putc(0,temp);
-=======
->>>>>>> c13dc21b0a6c7ce6bad252b3e3d33432b1db1281
-	putc(0,temp);
-	putc(8,temp);
-	putc(0x9C,temp);
-	putc(0,temp);
-<<<<<<< HEAD
-	putc(0,temp);
-=======
-	putc(1,temp);
-	putc(((cfgSize+0x8B4)>>24)&0xFF,temp);
-	putc(((cfgSize+0x8B4)>>16)&0xFF,temp);
-	putc(((cfgSize+0x8B4)>>8)&0xFF,temp);
-	putc((cfgSize+0x8B4)&0xFF,temp);
-	putc(0,temp);
 	putc(0,temp);
 	putc(8,temp);
 	putc(0x9C,temp);
 	putc(0,temp);
 	putc(0,temp);
->>>>>>> c13dc21b0a6c7ce6bad252b3e3d33432b1db1281
 	putc(8,temp);
 	putc(0xB0,temp);
 	if(goalCount)
@@ -364,24 +337,6 @@ void writeLz()
 	else
 	{
 		writeNullBytes(temp,8);
-<<<<<<< HEAD
-	}
-	if(jamabarCount)
-	{
-		putc((jamabarCount>>24)&0xFF,temp);
-		putc((jamabarCount>>16)&0xFF,temp);
-		putc((jamabarCount>>8)&0xFF,temp);
-		putc(jamabarCount&0xFF,temp);
-		putc((sectOffs[2]>>24)&0xFF,temp);
-		putc((sectOffs[2]>>16)&0xFF,temp);
-		putc((sectOffs[2]>>8)&0xFF,temp);
-		putc(sectOffs[2]&0xFF,temp);
-	}
-	else
-	{
-		writeNullBytes(temp,8);
-=======
->>>>>>> c13dc21b0a6c7ce6bad252b3e3d33432b1db1281
 	}
 	writeNullBytes(temp,8);
 	if(bananaCount)
@@ -404,17 +359,10 @@ void writeLz()
 	putc(((noBgModels)>>16)&0xFF,temp);
 	putc(((noBgModels)>>8)&0xFF,temp);
 	putc((noBgModels)&0xFF,temp);
-<<<<<<< HEAD
 	putc(((((tallyObjNames-noBgModels)*0x180)+realColSize+cfgSize+0x8B4)>>24)&0xFF,temp);
 	putc(((((tallyObjNames-noBgModels)*0x180)+realColSize+cfgSize+0x8B4)>>16)&0xFF,temp);
 	putc(((((tallyObjNames-noBgModels)*0x180)+realColSize+cfgSize+0x8B4)>>8)&0xFF,temp);
 	putc((((tallyObjNames-noBgModels)*0x180)+realColSize+cfgSize+0x8B4)&0xFF,temp);
-=======
-	putc(((((tallyObjNames-noBgModels)*112)+realColSize+cfgSize+0x8B4)>>24)&0xFF,temp);
-	putc(((((tallyObjNames-noBgModels)*112)+realColSize+cfgSize+0x8B4)>>16)&0xFF,temp);
-	putc(((((tallyObjNames-noBgModels)*112)+realColSize+cfgSize+0x8B4)>>8)&0xFF,temp);
-	putc((((tallyObjNames-noBgModels)*112)+realColSize+cfgSize+0x8B4)&0xFF,temp);
->>>>>>> c13dc21b0a6c7ce6bad252b3e3d33432b1db1281
 	writeNullBytes(temp,15);
 	putc(1,temp);
 	writeNullBytes(temp,28);
@@ -422,32 +370,18 @@ void writeLz()
 	putc(((tallyObjNames-noBgModels)>>16)&0xFF,temp);
 	putc(((tallyObjNames-noBgModels)>>8)&0xFF,temp);
 	putc((tallyObjNames-noBgModels)&0xFF,temp);
-<<<<<<< HEAD
 	putc(((((tallyObjNames-noBgModels)*0x80)+realColSize+cfgSize+0x8B4)>>24)&0xFF,temp);
 	putc(((((tallyObjNames-noBgModels)*0x80)+realColSize+cfgSize+0x8B4)>>16)&0xFF,temp);
 	putc(((((tallyObjNames-noBgModels)*0x80)+realColSize+cfgSize+0x8B4)>>8)&0xFF,temp);
 	putc((((tallyObjNames-noBgModels)*0x80)+realColSize+cfgSize+0x8B4)&0xFF,temp);
-=======
-	putc(((((tallyObjNames-noBgModels)*16)+realColSize+cfgSize+0x8B4)>>24)&0xFF,temp);
-	putc(((((tallyObjNames-noBgModels)*16)+realColSize+cfgSize+0x8B4)>>16)&0xFF,temp);
-	putc(((((tallyObjNames-noBgModels)*16)+realColSize+cfgSize+0x8B4)>>8)&0xFF,temp);
-	putc((((tallyObjNames-noBgModels)*16)+realColSize+cfgSize+0x8B4)&0xFF,temp);
->>>>>>> c13dc21b0a6c7ce6bad252b3e3d33432b1db1281
 	putc(((tallyObjNames-noBgModels)>>24)&0xFF,temp);
 	putc(((tallyObjNames-noBgModels)>>16)&0xFF,temp);
 	putc(((tallyObjNames-noBgModels)>>8)&0xFF,temp);
 	putc((tallyObjNames-noBgModels)&0xFF,temp);
-<<<<<<< HEAD
 	putc(((((tallyObjNames-noBgModels)*0x100)+realColSize+cfgSize+0x8B4)>>24)&0xFF,temp);
 	putc(((((tallyObjNames-noBgModels)*0x100)+realColSize+cfgSize+0x8B4)>>16)&0xFF,temp);
 	putc(((((tallyObjNames-noBgModels)*0x100)+realColSize+cfgSize+0x8B4)>>8)&0xFF,temp);
 	putc((((tallyObjNames-noBgModels)*0x100)+realColSize+cfgSize+0x8B4)&0xFF,temp);
-=======
-	putc(((((tallyObjNames-noBgModels)*28)+realColSize+cfgSize+0x8B4)>>24)&0xFF,temp);
-	putc(((((tallyObjNames-noBgModels)*28)+realColSize+cfgSize+0x8B4)>>16)&0xFF,temp);
-	putc(((((tallyObjNames-noBgModels)*28)+realColSize+cfgSize+0x8B4)>>8)&0xFF,temp);
-	putc((((tallyObjNames-noBgModels)*28)+realColSize+cfgSize+0x8B4)&0xFF,temp);
->>>>>>> c13dc21b0a6c7ce6bad252b3e3d33432b1db1281
 	writeNullBytes(temp,2048);
 	int posx = toInt(starts[0].posx);
 	int posy = toInt(starts[0].posy);
@@ -486,7 +420,7 @@ void writeLz()
 	}
 	fclose(fpCfg);
 	int whereAreWe = ftell(temp);
-<<<<<<< HEAD
+	int ignoreTotal = 0;
 	for(int i=0; i<(tallyObjs+1); i++)
 	{
 	int animMe = 0;
@@ -540,17 +474,6 @@ void writeLz()
 	putc(((whereAreWe+(0x400*i)+(0x69C*(tallyObjs+1))+colSize+(0x200*(colSize/0x40)))>>16)&0xFF,temp);
 	putc(((whereAreWe+(0x400*i)+(0x69C*(tallyObjs+1))+colSize+(0x200*(colSize/0x40)))>>8)&0xFF,temp);
 	putc((whereAreWe+(0x400*i)+(0x69C*(tallyObjs+1))+colSize+(0x200*(colSize/0x40)))&0xFF,temp);
-=======
-	writeNullBytes(temp,36);
-	putc(((whereAreWe+0x49C)>>24)&0xFF,temp);
-	putc(((whereAreWe+0x49C)>>16)&0xFF,temp);
-	putc(((whereAreWe+0x49C)>>8)&0xFF,temp);
-	putc((whereAreWe+0x49C)&0xFF,temp);
-	putc(((whereAreWe+0x69C+colSize+(0x200*(colSize/0x40)))>>24)&0xFF,temp);
-	putc(((whereAreWe+0x69C+colSize+(0x200*(colSize/0x40)))>>16)&0xFF,temp);
-	putc(((whereAreWe+0x69C+colSize+(0x200*(colSize/0x40)))>>8)&0xFF,temp);
-	putc((whereAreWe+0x69C+colSize+(0x200*(colSize/0x40)))&0xFF,temp);
->>>>>>> c13dc21b0a6c7ce6bad252b3e3d33432b1db1281
 	putc(0xC3,temp);
 	putc(0x80,temp);
 	putc(0,temp);
@@ -590,11 +513,7 @@ void writeLz()
 	{
 		writeNullBytes(temp,8);
 	}
-<<<<<<< HEAD
 	if(bumperCount && (i==0))
-=======
-	if(bumperCount)
->>>>>>> c13dc21b0a6c7ce6bad252b3e3d33432b1db1281
 	{
 		putc((bumperCount>>24)&0xFF,temp);
 		putc((bumperCount>>16)&0xFF,temp);
@@ -608,29 +527,9 @@ void writeLz()
 	else
 	{
 		writeNullBytes(temp,8);
-<<<<<<< HEAD
-	}
-	if(jamabarCount && (i==0))
-	{
-		putc((jamabarCount>>24)&0xFF,temp);
-		putc((jamabarCount>>16)&0xFF,temp);
-		putc((jamabarCount>>8)&0xFF,temp);
-		putc(jamabarCount&0xFF,temp);
-		putc((sectOffs[2]>>24)&0xFF,temp);
-		putc((sectOffs[2]>>16)&0xFF,temp);
-		putc((sectOffs[2]>>8)&0xFF,temp);
-		putc(sectOffs[2]&0xFF,temp);
-	}
-	else
-	{
-		writeNullBytes(temp,8);
-	}
-	if(bananaCount && (i==0))
-=======
 	}
 	writeNullBytes(temp,8);
-	if(bananaCount)
->>>>>>> c13dc21b0a6c7ce6bad252b3e3d33432b1db1281
+	if(bananaCount && (i==0))
 	{
 		putc((bananaCount>>24)&0xFF,temp);
 		putc((bananaCount>>16)&0xFF,temp);
@@ -644,7 +543,6 @@ void writeLz()
 	else
 	{
 		writeNullBytes(temp,8);
-<<<<<<< HEAD
 	}
 	writeNullBytes(temp,48);
 	if(i==0)
@@ -653,28 +551,20 @@ void writeLz()
 	}
 	else
 	{
-	if(i!=0) { writeNullBytes(temp,3); putc(1,temp); }
+	int ignoreMe = 0;
+	for(int j=0; j<ignoreCount; j++)
+	{
+		if(strcmp(ignoreList[j],cmnObjNames[i-1].name)==0) { ignoreMe=1; ignoreTotal++; }
+	}
+	if(ignoreMe==0) { writeNullBytes(temp,3); putc(1,temp); }
 	else writeNullBytes(temp,4);
-	putc(((((tallyObjNames-noBgModels)*0x100)+(4*(i-1))+realColSize+cfgSize+0x8B4)>>24)&0xFF,temp);
-	putc(((((tallyObjNames-noBgModels)*0x100)+(4*(i-1))+realColSize+cfgSize+0x8B4)>>16)&0xFF,temp);
-	putc(((((tallyObjNames-noBgModels)*0x100)+(4*(i-1))+realColSize+cfgSize+0x8B4)>>8)&0xFF,temp);
-	putc((((tallyObjNames-noBgModels)*0x100)+(4*(i-1))+realColSize+cfgSize+0x8B4)&0xFF,temp);
+	putc(((((tallyObjNames-noBgModels)*0x100)+(4*(i-1-ignoreTotal))+realColSize+cfgSize+0x8B4)>>24)&0xFF,temp);
+	putc(((((tallyObjNames-noBgModels)*0x100)+(4*(i-1-ignoreTotal))+realColSize+cfgSize+0x8B4)>>16)&0xFF,temp);
+	putc(((((tallyObjNames-noBgModels)*0x100)+(4*(i-1-ignoreTotal))+realColSize+cfgSize+0x8B4)>>8)&0xFF,temp);
+	putc((((tallyObjNames-noBgModels)*0x100)+(4*(i-1-ignoreTotal))+realColSize+cfgSize+0x8B4)&0xFF,temp);
 	}
 	writeNullBytes(temp,1024);
 	}
-=======
-	}
-	writeNullBytes(temp,48);
-	putc(((tallyObjNames-noBgModels)>>24)&0xFF,temp);
-	putc(((tallyObjNames-noBgModels)>>16)&0xFF,temp);
-	putc(((tallyObjNames-noBgModels)>>8)&0xFF,temp);
-	putc((tallyObjNames-noBgModels)&0xFF,temp);
-	putc(((((tallyObjNames-noBgModels)*28)+realColSize+cfgSize+0x8B4)>>24)&0xFF,temp);
-	putc(((((tallyObjNames-noBgModels)*28)+realColSize+cfgSize+0x8B4)>>16)&0xFF,temp);
-	putc(((((tallyObjNames-noBgModels)*28)+realColSize+cfgSize+0x8B4)>>8)&0xFF,temp);
-	putc((((tallyObjNames-noBgModels)*28)+realColSize+cfgSize+0x8B4)&0xFF,temp);
-	writeNullBytes(temp,1024);
->>>>>>> c13dc21b0a6c7ce6bad252b3e3d33432b1db1281
 	for(int i=0; i<colSize; i++)
 	{
 		putc(getc(fpCol),temp);
@@ -698,49 +588,10 @@ void writeLz()
 		putc(0xFF,temp);
 		putc(0xFF,temp);
 	}
-<<<<<<< HEAD
 	}
 	for(int i=0; i<(tallyObjs+1); i++)
 	{
 		if(i==0)
-=======
-	for(int i=0; i<256; i++)
-	{
-		putc(((whereAreWe+i*2+(i*2*(colSize/0x40)))>>24)&0xFF,temp);
-		putc(((whereAreWe+i*2+(i*2*(colSize/0x40)))>>16)&0xFF,temp);
-		putc(((whereAreWe+i*2+(i*2*(colSize/0x40)))>>8)&0xFF,temp);
-		putc((whereAreWe+i*2+(i*2*(colSize/0x40)))&0xFF,temp);
-	}
-	whereAreWe = ftell(temp);
-	for(int i=0; i<(tallyObjNames-noBgModels); i++)
-	{
-		writeNullBytes(temp,12);
-		putc(((whereAreWe+((tallyObjNames-noBgModels)*32)+(80*i))>>24)&0xFF,temp);
-		putc(((whereAreWe+((tallyObjNames-noBgModels)*32)+(80*i))>>16)&0xFF,temp);
-		putc(((whereAreWe+((tallyObjNames-noBgModels)*32)+(80*i))>>8)&0xFF,temp);
-		putc((whereAreWe+((tallyObjNames-noBgModels)*32)+(80*i))&0xFF,temp);
-	}
-	for(int i=0; i<(tallyObjNames-noBgModels); i++)
-	{
-		writeNullBytes(temp,7);
-		putc(1,temp);
-		putc(((whereAreWe+8+(16*i))>>24)&0xFF,temp);
-		putc(((whereAreWe+8+(16*i))>>16)&0xFF,temp);
-		putc(((whereAreWe+8+(16*i))>>8)&0xFF,temp);
-		putc((whereAreWe+8+(16*i))&0xFF,temp);
-	}
-	for(int i=0; i<(tallyObjNames-noBgModels); i++)
-	{
-		putc(((whereAreWe+((tallyObjNames-noBgModels)*16)+(12*i))>>24)&0xFF,temp);
-		putc(((whereAreWe+((tallyObjNames-noBgModels)*16)+(12*i))>>16)&0xFF,temp);
-		putc(((whereAreWe+((tallyObjNames-noBgModels)*16)+(12*i))>>8)&0xFF,temp);
-		putc((whereAreWe+((tallyObjNames-noBgModels)*16)+(12*i))&0xFF,temp);
-	}
-	for(int i=0; i<tallyObjNames; i++)
-	{
-		int ignoreMe = 0;
-		for(int j=0; j<ignoreCount; j++)
->>>>>>> c13dc21b0a6c7ce6bad252b3e3d33432b1db1281
 		{
 			for(int j=0; j<256; j++)
 			{
@@ -771,16 +622,15 @@ void writeLz()
 			}
 		}
 	}
-<<<<<<< HEAD
 	whereAreWe = ftell(temp);
 	int whereAreWeSave = whereAreWe;
 	for(int i=0; i<(tallyObjNames-noBgModels); i++)
 	{
 		writeNullBytes(temp,12);
-		putc(((whereAreWe+((tallyObjNames-noBgModels)*0x180)+(80*i))>>24)&0xFF,temp);
-		putc(((whereAreWe+((tallyObjNames-noBgModels)*0x180)+(80*i))>>16)&0xFF,temp);
-		putc(((whereAreWe+((tallyObjNames-noBgModels)*0x180)+(80*i))>>8)&0xFF,temp);
-		putc((whereAreWe+((tallyObjNames-noBgModels)*0x180)+(80*i))&0xFF,temp);
+		putc(((whereAreWe+((tallyObjNames-noBgModels)*0x180)+(noBgModels*0x80)+(80*i))>>24)&0xFF,temp);
+		putc(((whereAreWe+((tallyObjNames-noBgModels)*0x180)+(noBgModels*0x80)+(80*i))>>16)&0xFF,temp);
+		putc(((whereAreWe+((tallyObjNames-noBgModels)*0x180)+(noBgModels*0x80)+(80*i))>>8)&0xFF,temp);
+		putc((whereAreWe+((tallyObjNames-noBgModels)*0x180)+(noBgModels*0x80)+(80*i))&0xFF,temp);
 	}
 	writeNullBytes(temp,0x70*(tallyObjNames-noBgModels));
 	for(int i=0; i<(tallyObjNames-noBgModels); i++)
@@ -807,17 +657,11 @@ void writeLz()
 		putc(0,temp);
 		putc(0,temp);
 		putc(0,temp);
-=======
-	whereAreWe = ftell(temp);
-	for(int i=0; i<noBgModels; i++)
-	{
-		writeNullBytes(temp,3);
->>>>>>> c13dc21b0a6c7ce6bad252b3e3d33432b1db1281
 		putc(0x1F,temp);
-		putc(((whereAreWe+(noBgModels*0x38)+(i*80))&0xFF000000)>>24,temp);
-		putc(((whereAreWe+(noBgModels*0x38)+(i*80))&0xFF0000)>>16,temp);
-		putc(((whereAreWe+(noBgModels*0x38)+(i*80))&0xFF00)>>8,temp);
-		putc((whereAreWe+(noBgModels*0x38)+(i*80))&0xFF,temp);
+		putc(((whereAreWe+(noBgModels*0x80)+((tallyObjNames-noBgModels+i)*80))&0xFF000000)>>24,temp);
+		putc(((whereAreWe+(noBgModels*0x80)+((tallyObjNames-noBgModels+i)*80))&0xFF0000)>>16,temp);
+		putc(((whereAreWe+(noBgModels*0x80)+((tallyObjNames-noBgModels+i)*80))&0xFF00)>>8,temp);
+		putc((whereAreWe+(noBgModels*0x80)+((tallyObjNames-noBgModels+i)*80))&0xFF,temp);
 		writeNullBytes(temp,24);
 		putc(0x3F,temp);
 		putc(0x80,temp);
@@ -849,7 +693,21 @@ void writeLz()
 		}
 		}
 	}
-<<<<<<< HEAD
+	for(int i=0; i<tallyObjNames; i++)
+	{
+		int ignoreMe = 0;
+		for(int j=0; j<ignoreCount; j++)
+		{
+			if(strcmp(ignoreList[j],cmnObjNames[i].name)==0) ignoreMe=1;
+		}
+		if(ignoreMe==1)
+		{
+		for(int j=0; j<80; j++)
+		{
+			putc(cmnObjNames[i].name[j],temp);
+		}
+		}
+	}
 	int whereAreWeNow = ftell(temp);
 	int whereAreWeDiff = whereAreWeNow-whereAreWeSave;
 	for(int i=0; i<((tallyObjs*0x80)-whereAreWeDiff); i++) {putc(0,temp);}
@@ -1066,8 +924,6 @@ void writeLz()
 		putc(0,temp);
 		putc(0,temp);
 	}
-=======
->>>>>>> c13dc21b0a6c7ce6bad252b3e3d33432b1db1281
 	if(ftell(temp)%8 == 4)
 	{
 		putc(0,temp);

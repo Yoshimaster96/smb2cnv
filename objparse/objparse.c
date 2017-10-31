@@ -58,7 +58,8 @@ void parseObj(char * objpath)
 			tallyObjs++;
 		}
 		else if(strcmp(ident,"#")==0); // Comment identifier
-		else {sscanf(line," %s %s ",ident,param1); printf("Syntax error in %s:\n %s %s\n",objpath,ident,param1); errCount++;}
+		else if(strcmp(ident,"g")==0 || strcmp(ident,"s")==0 || strcmp(ident,"mtllib")==0 || strcmp(ident,"usemtl")==0); // Unused commands
+		else {sscanf(line," %s %s ",ident,param1); printf("Syntax error or unimplemented command in %s:\n %s %s\n",objpath,ident,param1); errCount++;}
 		for(int i=0; i<80; i++)
 		{
 			line[i] = '\0';
@@ -70,6 +71,6 @@ void parseObj(char * objpath)
 	}
 	if(errCount!=0)
 	{
-		printf("There were %i syntax errors, output file may not be good.\n",errCount);
+		printf("There were %i syntax errors and/or unimplemented commands, output file may not be good.\n",errCount);
 	}
 }

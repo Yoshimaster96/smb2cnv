@@ -133,7 +133,8 @@ void parseConfig(char * configpath)
 		{
 			char values[80] = "";
 			sscanf(value,"%s",values);
-			strcpy(ignoreList[ignoreCount++],values);
+			strcpy(ignoreList[index],values);
+			if((index+1)>ignoreCount) ignoreCount = (index+1);
 		}
 		else if(strcmp(ident,"animobj")==0)
 		{
@@ -152,26 +153,26 @@ void parseConfig(char * configpath)
 					{
 						float valuef = 0.0;
 						sscanf(valueb,"%f",&valuef);
-						if(param2b=='x') animFrame[animCount][indexb].posx = valuef;
-						else if(param2b=='y') animFrame[animCount][indexb].posy = valuef;
-						else if(param2b=='z') animFrame[animCount][indexb].posz = valuef;
-						if((indexb+1)>animFrameCount[animCount]) animFrameCount[animCount] = (indexb+1);
+						if(param2b=='x') animFrame[index][indexb].posx = valuef;
+						else if(param2b=='y') animFrame[index][indexb].posy = valuef;
+						else if(param2b=='z') animFrame[index][indexb].posz = valuef;
+						if((indexb+1)>animFrameCount[index]) animFrameCount[index] = (indexb+1);
 					}
 					else if(strcmp(param1b,"rot")==0)
 					{
 						float valuef = 0.0;
 						sscanf(valueb,"%f",&valuef);
-						if(param2b=='x') animFrame[animCount][indexb].rotx = valuef;
-						else if(param2b=='y') animFrame[animCount][indexb].roty = valuef;
-						else if(param2b=='z') animFrame[animCount][indexb].rotz = valuef;
-						if((indexb+1)>animFrameCount[animCount]) animFrameCount[animCount] = (indexb+1);
+						if(param2b=='x') animFrame[index][indexb].rotx = valuef;
+						else if(param2b=='y') animFrame[index][indexb].roty = valuef;
+						else if(param2b=='z') animFrame[index][indexb].rotz = valuef;
+						if((indexb+1)>animFrameCount[index]) animFrameCount[index] = (indexb+1);
 					}
 					else if(strcmp(param1b,"time")==0)
 					{
 						float valuef = 0.0;
 						sscanf(valueb,"%f",&valuef);
-						animFrame[animCount][indexb].time = valuef;
-						if((indexb+1)>animFrameCount[animCount]) animFrameCount[animCount] = (indexb+1);
+						animFrame[index][indexb].time = valuef;
+						if((indexb+1)>animFrameCount[index]) animFrameCount[index] = (indexb+1);
 					}
 				}
 				fclose(fp);
@@ -181,7 +182,8 @@ void parseConfig(char * configpath)
 			{
 				char values[80] = "";
 				sscanf(value,"%s",values);
-				strcpy(animList[ignoreCount++],values);
+				strcpy(animList[index],values);
+				if((index+1)>animCount) animCount = (index+1);
 			}
 			else if(strcmp(param1,"center")==0)
 			{
