@@ -1,3 +1,5 @@
+!!THIS IS NO LONGER BEING MAINTAINED, PLEASE USE CRAFTEDCART'S TOOL!!
+
 # SMB2CNV, a Super Monkey Ball 2 level converter
 By Yoshimaster96
 
